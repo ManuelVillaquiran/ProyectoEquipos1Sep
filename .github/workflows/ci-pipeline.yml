@@ -22,14 +22,12 @@ jobs:
       - name: Instalar dependencias
         run: |
           python -m pip install --upgrade pip
-          if [ -f proyectoEquipos/requirements.txt ]; then pip install -r proyectoEquipos/requirements.txt; fi
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: Ejecutar migraciones de la base de datos
         run: |
-          cd proyectoEquipos
           python manage.py migrate
 
       - name: Ejecutar pruebas unitarias
         run: |
-          cd proyectoEquipos
           python manage.py test
